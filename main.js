@@ -10,7 +10,14 @@ console.log('Sample JavaScript #2 HW #14');
  * lastName – любая фамилия, строка
  * age – любой возраст, число
  */
-
+var userObj = {
+  firstName: 'Olga',
+  lastName: 'Solda',
+  age: 42,
+  fullName() {
+    return `${userObj.firstName} ${userObj.lastName}`
+  }
+}
 /*
  * #2
  *
@@ -22,7 +29,7 @@ console.log('Sample JavaScript #2 HW #14');
  * userObj.lastName ← Фамилия'
  * userObj.fullName() → 'Имя Фамилия'.
  */
-
+console.log(userObj.fullName());
 /*
  * #3
  *
@@ -38,9 +45,12 @@ console.log('Sample JavaScript #2 HW #14');
 
 /* eslint-disable capitalized-comments */
 // console.log(defUpperStr('My text')); // MY TEXT
-
+function defUpperStr(str){
+  return(str || 'Default text').toUpperCase();
+}
+console.log(defUpperStr('My text'));
 // console.log(defUpperStr()); // DEFAULT TEXT
-
+console.log(defUpperStr());
 /*
  * #4
  *
@@ -57,19 +67,23 @@ console.log('Sample JavaScript #2 HW #14');
  * evenFn(15) → [2, 4, 6, 8, 10, 12, 14]
  * evenFn(20) → [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
  */
-
+function evenFn(n) {
+  var arr = [];
+  for (i = 1; i <= n; i++) if (i % 2 === 0) arr.push(i);
+  return (arr);
+}
 // console.log(evenFn(10)); // [2, 4, 6, 8, 10]
-
+console.log(evenFn(10));
 // console.log(evenFn(15)); // [2, 4, 6, 8, 10, 12, 14]
-
+console.log(evenFn(15));
 // console.log(evenFn(20)); // [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
-
+console.log(evenFn(20));
 /*
  * #5
  *
  * Создайте функцию weekFn(n), которая принимает номер дня недели, а возвращает его название.
  * Если вводится строка, любое дробное число или число вне диапазона 1..7 – функция должна вернуть null.
- *
+ 
  * Например:
  * 1 → 'Понедельник'
  * 2 → 'Вторник'
@@ -78,19 +92,33 @@ console.log('Sample JavaScript #2 HW #14');
  *
  * В реализации функции обязательно должны быть использованы операторы switch / case / default.
  */
+function weekFn(n) {
+  var str = '';
 
+  switch (n) {
+    case 1: str = 'Понедельник'; break;
+    case 2: str = 'Вторник'; break;
+    case 3: str = 'Среда'; break;
+    case 4: str = 'Четверг'; break;
+    case 5: str = 'Пятница'; break;
+    case 6: str = 'Суббота'; break;
+    case 7: str = 'Воскресенье'; break;
+    default: str = null;
+  }
+  return str;
+}
 // console.log(weekFn(1)); // 'Понедельник'
-
+console.log(weekFn(1));
 // console.log(weekFn(3)); // 'Среда'
-
+console.log(weekFn(3));
 // console.log(weekFn(7)); // 'Воскресенье'
-
+console.log(weekFn(7));
 // console.log(weekFn(9)); // null
-
+console.log(weekFn(9));
 // console.log(weekFn(1.5)); // null
-
+console.log(weekFn(1.5));
 // console.log(weekFn('2')); // null
-
+console.log(weekFn('2'));
 /*
  * #6
  *

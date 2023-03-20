@@ -230,12 +230,15 @@ console.log('130 :', ageClassification(130));
 function oddFn(n) {
   var arr = [];
   var i = 0;
+
+  while (i++ < n) if (i % 2 !== 0) arr.push(i);
+  return arr;
 }
-// console.log(oddFn(10)); // [1, 3, 5, 7, 9]
+console.log(oddFn(10)); // [1, 3, 5, 7, 9]
 
-// console.log(oddFn(15)); // [1, 3, 5, 7, 9, 11, 13, 15]
+console.log(oddFn(15)); // [1, 3, 5, 7, 9, 11, 13, 15]
 
-// console.log(oddFn(20)); // [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+console.log(oddFn(20)); // [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
 
 /*
  * #8
@@ -248,7 +251,11 @@ function oddFn(n) {
  * Реализуйте проверку: если третьим параметром передается не функция, нужно вернуть false.
  *
  */
+function mainFunc(a, b, func) {
 
+  if (func && typeof func === 'function') return func(a, b);
+return false;
+}
 /*
  * реализуйте следующие функции, которые будут осуществлять механизм callback в основной функции,
  * возвращая ей результат собственного вычисления...
@@ -256,11 +263,17 @@ function oddFn(n) {
  */
 
 // cbRandom(a, b) – вычисляет и возвращает произвольное целое число в диапазоне между a и b включительно.
-
+function cbRandom(a, b) {
+  return Math.floor(Math.random() * (a - b + 1) + b);
+}
 // cbPow(a, b) – вычисляет и возвращает результат возведения числа a в степень b.
-
+function cbPow(a, b) {
+  return Math.pow(a, b);
+}
 // cbAdd(a, b) – вычисляет и возвращает сумму двух чисел a и b.
-
+function cbAdd(a, b) {
+  return a + b;
+}
 /*
  * mainFunc() должна возвращать результат работы переданной ей возвратной функции, например:
  * mainFunc(2, 5, cbRandom) → случайно от 2 до 5 включительно
@@ -270,10 +283,10 @@ function oddFn(n) {
  * mainFunc(2, 5, 'not a func') → false
  */
 
-// console.log(mainFunc(2, 5, cbRandom)); // целые числа в диапазоне 2..5
+console.log(mainFunc(2, 5, cbRandom)); // целые числа в диапазоне 2..5
 
-// console.log(mainFunc(2, 5, cbPow)); // 32
+console.log(mainFunc(2, 5, cbPow)); // 32
 
-// console.log(mainFunc(2, 5, cbAdd)); // 7
+console.log(mainFunc(2, 5, cbAdd)); // 7
 
-// console.log(mainFunc(2, 5, 'not a func')); // false
+console.log(mainFunc(2, 5, 'not a func')); // false
